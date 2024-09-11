@@ -2,8 +2,8 @@
   "name": "frontend",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for frontend goes here",
-  "repository": "",
+  "description": " Frontend repository for SAY hackathon 2024, wave 1, groep3",
+  "repository": "github:lblod/frontend-say-hackathon-w1-g3",
   "license": "MIT",
   "author": "",
   "directories": {
