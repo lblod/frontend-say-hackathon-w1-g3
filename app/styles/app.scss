@@ -1,1 +1,9 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+@import "@appuniversum/ember-appuniversum/styles/a-settings";
+@import "@appuniversum/ember-appuniversum/styles/a-tools";
+@import "@appuniversum/ember-appuniversum/styles/a-generic";
+@import "@appuniversum/ember-appuniversum/styles/a-elements";
+@import "@appuniversum/ember-appuniversum/styles/a-objects";
+@import "@appuniversum/ember-appuniversum/styles/a-components";
+@import "@appuniversum/ember-appuniversum/styles/a-plugins";
+@import "@appuniversum/ember-appuniversum/styles/a-utilities";
+@import "shame";
