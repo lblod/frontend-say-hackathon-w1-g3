@@ -1,6 +1,30 @@
 {{page-title "Frontend"}}
 
-<h2 id="title">Welcome to Ember</h2>
-<AuButton>Hello</AuButton>
-
-{{outlet}}
+<AuApp>
+  <AuMainHeader
+    @brandLink={{unless
+      this.session.isAuthenticated
+      "https://www.vlaanderen.be/nl"
+    }}
+    @homeRoute="app"
+    @appTitle="Erfgoed loket"
+  >
+    <li class="au-c-list-horizontal__item">
+      {{#if this.currentSession.isLoaded}}
+        <AuDropdown
+          @title={{this.userInfo}}
+          @buttonLabel="Account settings"
+          @alignment="right"
+          role="menu"
+        >
+          <AuButton @icon="logout" role="menuitem" {{on "click" this.logout}}>
+            Afmelden
+          </AuButton>
+        </AuDropdown>
+      {{else}}
+        <LoginButton @isCompact={{true}} />
+      {{/if}}
+    </li>
+  </AuMainHeader>
+  {{outlet}}
+</AuApp>

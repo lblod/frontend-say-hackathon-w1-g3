@@ -1,0 +1,55 @@
+{{page-title "Mock login"}}
+
+<div class="au-c-main-container" itemprop="mainContentOfPage">
+  <div class="au-c-main-container__content au-c-main-container__content--scroll">
+    <main id="content">
+      <AuContentHeader @titlePartOne="Vlaanderen" @titlePartTwo="is lokaal bestuur">
+        <img sizes="50vw" src="/assets/images/loket-header-1600.jpg" srcset="/assets/images/loket-header-320.jpg 320w, /assets/images/loket-header-1024.jpg 1024w, /assets/images/loket-header-1600.jpg 1600w" alt="Foto van een laptop met daarop het vlaanderen logo.">
+      </AuContentHeader>
+
+      <div class="au-o-region-large">
+        <div class="au-o-layout">
+          <AuHeading @skin="4" class="au-u-margin-bottom-small">Kies een gebruiker</AuHeading>
+          <MockLogin as |login|>
+            {{#if this.queryStore.isRunning}}
+              <AuLoader class="au-o-region">
+                Accounts aan het laden
+              </AuLoader>
+            {{else}}
+              {{#if login.errorMessage}}
+                <AuAlert @icon="alert-triangle" @title={{login.errorMessage}} @skin="warning" />
+              {{/if}}
+              {{#if this.accounts.length}}
+                <ul class="au-o-flow au-o-flow--small au-u-margin-bottom-small">
+                  {{#each this.accounts as |account|}}
+                    <li>
+                      <AuButton
+                        {{!TODO: this should be a tertiary button, but Appuniversum doesn't support that yet}}
+                        @skin="secondary"
+                        class="mock-account-button au-u-padding-small au-u-1-1 au-u-text-left"
+                        {{on
+                          "click"
+                          (fn login.login account.id account.user.group.id)
+                        }}
+                      >
+                        {{account.user.firstName}}
+                        {{account.user.lastName}}
+                      </AuButton>
+                    </li>
+                  {{/each}}
+                </ul>
+              {{/if}}
+              <AuDataTableNumberPagination
+                @page={{this.page}}
+                @size={{this.size}}
+                @nbOfItems={{this.accounts.length}}
+                @total={{this.accounts.meta.count}}
+                @links={{this.accounts.meta.pagination}}
+              />
+            {{/if}}
+          </MockLogin>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
