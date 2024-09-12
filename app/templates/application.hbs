@@ -12,7 +12,7 @@
     <li class="au-c-list-horizontal__item">
       {{#if this.session.isAuthenticated}}
         <AuDropdown
-          @title="John Todo"
+          @title={{this.userInfo}}
           @buttonLabel="Account settings"
           @alignment="right"
           role="menu"
