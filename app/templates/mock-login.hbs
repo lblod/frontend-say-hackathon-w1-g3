@@ -42,9 +42,9 @@
               <AuDataTableNumberPagination
                 @page={{this.page}}
                 @size={{this.size}}
-                @nbOfItems={{this.model.length}}
-                @total={{this.model.meta.count}}
-                @links={{this.model.meta.pagination}}
+                @nbOfItems={{this.accounts.length}}
+                @total={{this.accounts.meta.count}}
+                @links={{this.accounts.meta.pagination}}
               />
             {{/if}}
           </MockLogin>
