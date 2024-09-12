@@ -10,7 +10,7 @@
     @appTitle="Erfgoed loket"
   >
     <li class="au-c-list-horizontal__item">
-      {{#if this.session.isAuthenticated}}
+      {{#if this.currentSession.isLoaded}}
         <AuDropdown
           @title={{this.userInfo}}
           @buttonLabel="Account settings"
