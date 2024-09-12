@@ -1,0 +1,75 @@
+<div class="au-c-main-container" itemprop="mainContentOfPage">
+  <div
+    class="au-c-main-container__content au-c-main-container__content--scroll"
+  >
+    <main id="content">
+      <AuContentHeader
+        @titlePartOne="Vlaanderen"
+        @titlePartTwo="is erfgoed"
+      >
+        <img
+          sizes="50vw"
+          src="/assets/images/loket-header-1600.jpg"
+          srcset="/assets/images/loket-header-320.jpg 320w, /assets/images/loket-header-1024.jpg 1024w, /assets/images/loket-header-1600.jpg 1600w"
+          alt="Foto van een laptop met daarop het vlaanderen logo."
+        />
+      </AuContentHeader>
+
+      <section class="au-o-region-large">
+        <div class="au-o-layout">
+          <div class="au-o-grid au-o-grid--small">
+            <div class="au-o-grid__item au-u-3-4@small au-u-1-2@medium">
+              <AuContent @skin="large">
+                <h1>Erfgoed Loket</h1>
+                <p>
+                  Hier kunnen we een beschrijving van de app weergeven. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel condimentum magna. Morbi interdum neque eu consequat auctor. Donec efficitur metus non lectus faucibus luctus.
+                </p>
+
+                <p>
+                  Mauris in imperdiet ligula. Nam pharetra, tortor et iaculis mollis, velit odio posuere dui, ut vestibulum tellus urna sed mi.
+                </p>
+              </AuContent>
+            </div>
+            <div
+              class="au-o-grid__item au-u-1-4@small au-u-1-2@medium au-u-text-right@medium"
+            >
+              <LoginButton />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <AuMainFooter>
+      <AuContent @skin="small">
+        <p>Uitgegeven door
+          <AuLinkExternal
+            href="https://www.vlaanderen.be/organisaties/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur"
+          >Agentschap Binnenlands Bestuur</AuLinkExternal></p>
+        <ul class="au-c-list-horizontal">
+          <li class="au-c-list-horizontal__item">
+            <AuLink
+              {{! TODO: real link }}
+              @route="app"
+              @skin="secondary"
+            >Disclaimer</AuLink>
+          </li>
+          <li class="au-c-list-horizontal__item">
+            <AuLink
+              {{! TODO: real link }}
+              @route="app"
+              @skin="secondary"
+            >Cookieverklaring</AuLink>
+          </li>
+          <li class="au-c-list-horizontal__item">
+            <AuLink
+              {{! TODO: real link }}
+              @route="app"
+              @skin="secondary"
+            >Toegankelijkheid</AuLink>
+          </li>
+        </ul>
+      </AuContent>
+    </AuMainFooter>
+  </div>
+</div>
