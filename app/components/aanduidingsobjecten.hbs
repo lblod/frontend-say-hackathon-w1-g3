@@ -1,8 +1,8 @@
 <div class="au-o-box">
-  <AuLabel for="gemeente">Zoek op naam of adres van uw erfgoed</AuLabel>
-  <AuInput id="gemeente" {{on "input" this.onGemeenteChange}} />
-  {{!-- <AuLabel for="gemeente">Straat naam</AuLabel>
-  <AuInput {{on "input" this.onStraatNaamChange}} /> --}}
+  <AuLabel for="gemeente">Zoek erfgoed op naam</AuLabel>
+  <AuInput id="gemeente" {{on "input" this.onNameInputChange}} />
+  <AuLabel for="straatnaam">Zoek op straatnaam</AuLabel>
+  <AuInput id="straatnaam" {{on "input" this.onStraatChange}} />
 </div>
 <div class="au-o-box">
   {{#each this.aanduidingsobjecten as |aanduidingsobject|}}
