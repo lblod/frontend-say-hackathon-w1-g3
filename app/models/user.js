@@ -10,9 +10,9 @@ export default class UserModel extends Model {
     async: false,
     inverse: null,
   })
-  administrativeUnits;
+  groups;
 
   get group() {
-    return this.bestuurseenheden.at(0);
+    return this.groups.at(0);
   }
 }

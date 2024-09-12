@@ -18,7 +18,7 @@ export default class MockLoginController extends Controller {
   *queryStore() {
     const filter = { provider: 'https://github.com/lblod/mock-login-service' };
     const accounts = yield this.store.query('account', {
-      include: 'user.administrative-units',
+      include: 'user.groups',
       filter,
       page: { size: this.size, number: this.page },
       sort: 'user.first-name',
