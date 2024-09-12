@@ -1,0 +1,21 @@
+<div class="au-o-box">
+  <AuLabel for="gemeente">Zoek op naam of adres van uw erfgoed</AuLabel>
+  <AuInput id="gemeente" {{on "input" this.onGemeenteChange}} />
+  {{!-- <AuLabel for="gemeente">Straat naam</AuLabel>
+  <AuInput {{on "input" this.onStraatNaamChange}} /> --}}
+</div>
+<div class="au-o-box">
+  {{#each this.aanduidingsobjecten as |aanduidingsobject|}}
+    <AuCard as |c|>
+      <c.header>
+        <AuHeading @level="2" @skin="4">
+          {{aanduidingsobject.naam}}
+        </AuHeading>
+      </c.header>
+      <c.content>
+        <p>{{aanduidingsobject.locatie_samenvatting}}</p>
+      </c.content>
+    </AuCard>
+    <br />
+  {{/each}}
+</div>
