@@ -1,21 +1,17 @@
 <div class="au-o-box">
-  <AuLabel for="gemeente">Zoek erfgoed op naam</AuLabel>
-  <AuInput id="gemeente" {{on "input" this.onNameInputChange}} />
-  <AuLabel for="straatnaam">Zoek op straatnaam</AuLabel>
-  <AuInput id="straatnaam" {{on "input" this.onStraatChange}} />
-</div>
-<div class="au-o-box">
-  {{#each this.aanduidingsobjecten as |aanduidingsobject|}}
-    <AuCard as |c|>
-      <c.header>
-        <AuHeading @level="2" @skin="4">
-          {{aanduidingsobject.naam}}
-        </AuHeading>
-      </c.header>
-      <c.content>
-        <p>{{aanduidingsobject.locatie_samenvatting}}</p>
-      </c.content>
-    </AuCard>
-    <br />
-  {{/each}}
+  <AuLabel for="address">Naam Erfgoed</AuLabel>
+  <PowerSelect
+    @triggerId="address"
+    @allowClear={{true}}
+    @search={{perform this.search}}
+    @selected={{this.addressSuggestion}}
+    @onChange={{perform this.selectSuggestion}}
+    @loadingMessage="Aan het laden..."
+    @searchEnabled={{true}}
+    @noMatchesMessage="Geen resultaten"
+    @searchMessage="Typ om te zoeken"
+    as |suggestion|
+  >
+    <p>{{suggestion.name}} - {{suggestion.location}}</p>
+  </PowerSelect>
 </div>

@@ -1,11 +1,20 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
+import { task, timeout } from 'ember-concurrency';
+
+export const SEARCH_TIMEOUT = 500;
+
 export default class Aanduidingsobjecten extends Component {
   @tracked aanduidingsobjecten = [];
+  @tracked addressSuggestion;
 
-  onNameInputChange = async (event) => {
-    const input = event.target.value;
+  // search
+  search = task({ keepLatest: true }, async (searchData) => {
+    await timeout(SEARCH_TIMEOUT);
+
+    const input = searchData.trim();
+
     if (input === '') {
       this.aanduidingsobjecten = [];
       return;
@@ -23,28 +32,15 @@ export default class Aanduidingsobjecten extends Component {
     });
     // TODO add error handling
     const data = await response.json();
-    this.aanduidingsobjecten = data;
-  };
+    return data.map((aanduidingsobject) => ({
+      id: aanduidingsobject.id,
+      name: aanduidingsobject.naam,
+      location: aanduidingsobject.locatie_samenvatting,
+    }));
+  });
 
-  onStraatChange = async (event) => {
-    const input = event.target.value;
-    if (input === '') {
-      this.aanduidingsobjecten = [];
-      return;
-    }
-
-    const url = new URL(
-      'https://inventaris.onroerenderfgoed.be/aanduidingsobjecten',
-    );
-    url.searchParams.append('straat', input);
-
-    const response = await fetch(url, {
-      headers: {
-        Accept: 'application/json',
-      },
-    });
-    // TODO add error handling
-    const data = await response.json();
-    this.aanduidingsobjecten = data;
-  };
+  // selectSuggestion
+  selectSuggestion = task(async (addressSuggestion) => {
+    this.addressSuggestion = addressSuggestion;
+  });
 }
