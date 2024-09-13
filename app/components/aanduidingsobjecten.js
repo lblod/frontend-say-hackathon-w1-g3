@@ -1,11 +1,14 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { service } from '@ember/service';
 
 import { task, timeout } from 'ember-concurrency';
 
 export const SEARCH_TIMEOUT = 500;
 
 export default class Aanduidingsobjecten extends Component {
+  @service store;
+
   @tracked aanduidingsobjecten = [];
   @tracked addressSuggestion;
 
@@ -34,6 +37,7 @@ export default class Aanduidingsobjecten extends Component {
     const data = await response.json();
     return data.map((aanduidingsobject) => ({
       id: aanduidingsobject.id,
+      uri: aanduidingsobject.uri,
       name: aanduidingsobject.naam,
       location: aanduidingsobject.locatie_samenvatting,
     }));
@@ -43,4 +47,14 @@ export default class Aanduidingsobjecten extends Component {
   selectSuggestion = task(async (addressSuggestion) => {
     this.addressSuggestion = addressSuggestion;
   });
+
+  handleSave = async (event) => {
+    event.preventDefault();
+    // event.target.value
+    const newImmovableHeritage = this.store.createRecord('immovable-heritage', {
+      name: this.addressSuggestion.name,
+      uri: this.addressSuggestion.id,
+    });
+    await newImmovableHeritage.save();
+  };
 }
